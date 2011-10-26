@@ -119,7 +119,11 @@ loglevel 3
 on fs
 # mount mtd partitions
     mount rfs /dev/block/stl9 /system check=no
+<<<<<<< HEAD
     mount ext4 /dev/block/stl9 /system
+=======
+    mount ext4 /dev/block/stl9 /system noatime nodiratime errors=continue
+>>>>>>> 6032a2d... Add init.d, and ext4 mounts
 
 # use movinand second partition as /data. d.moskvitin
     #temp
@@ -130,7 +134,11 @@ on fs
     chown system system /data
     chmod 0771 /data    
     mount rfs /dev/block/stl10 /data nosuid nodev check=no
+<<<<<<< HEAD
     mount ext4 /dev/block/stl10 /data wait nosuid noatime nodiratime noauto_da_alloc
+=======
+    mount ext4 /dev/block/stl10 /data nosuid nodev crypt noatime nodiratime
+>>>>>>> 6032a2d... Add init.d, and ext4 mounts
     chown system system /data
     chmod 0771 /data
     chmod 0771 /data
@@ -144,7 +152,11 @@ on fs
     chown system system /data/db-journal
     chmod 0777 /data/db-journal
     mount rfs /dev/block/stl11 /cache nosuid nodev check=no
+<<<<<<< HEAD
     mount ext4 /dev/block/stl11 /cache wait nosuid noatime nodiratime noauto_da_alloc
+=======
+    mount ext4 /dev/block/stl11 /cache nosuid nodev noatime nodiratime errors=continue nobh data=writeback barrier=0 noauto_da_alloc
+>>>>>>> 6032a2d... Add init.d, and ext4 mounts
 
     mkdir /mnt/.lfs 0755 root root
     mount j4fs /dev/block/stl6 /mnt/.lfs
@@ -682,6 +694,13 @@ service bootanim /system/bin/bootanimation
     group graphics
     disabled
     oneshot
+
+#init.d support
+service init.d /system/bin/sh /sbin/initd.sh
+        user root
+        group system
+        critical	
+        oneshot
 
 service dbus /system/bin/dbus-daemon --system --nofork
     socket dbus stream 660 bluetooth bluetooth
