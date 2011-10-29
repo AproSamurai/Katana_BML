@@ -695,13 +695,10 @@ service bootanim /system/bin/bootanimation
     disabled
     oneshot
 
-#init.d support
-service init.d /system/bin/sh /sbin/initd.sh
-        user root
-        group system
-        critical	
-        oneshot
-
+# Execute files in /system/etc/init.d thanks bxfxf
+service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
+  oneshot
+  
 service dbus /system/bin/dbus-daemon --system --nofork
     socket dbus stream 660 bluetooth bluetooth
     user bluetooth
