@@ -105,8 +105,14 @@ BUILD_KERNEL()
 	pushd $KERNEL_BUILD_DIR
 		export KDIR=`pwd`
 		make ARCH=arm $DEFCONFIG_STRING
+<<<<<<< HEAD
 #		make -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX
 		make V=1 -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX 2>&1 | tee make.out
+=======
+		make -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX 2>&1 | tee make.out
+#		make V=1 -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX 2>&1 | tee make.out
+		cp arch/arm/boot/zImage /home/nubecoder/cm_android/system/device/samsung/epic/kernel
+>>>>>>> c4a6c1d... Quiet the verbose output of the build script.
 	popd
 }
 
