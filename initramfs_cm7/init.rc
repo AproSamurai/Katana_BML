@@ -698,6 +698,11 @@ service bootanim /system/bin/bootanimation
 # Execute files in /system/etc/init.d thanks bxfxf
 service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
   oneshot
+
+# Include extra init file
+import /system/etc/init.local.rc
+
+    class_start default
   
 service dbus /system/bin/dbus-daemon --system --nofork
     socket dbus stream 660 bluetooth bluetooth
