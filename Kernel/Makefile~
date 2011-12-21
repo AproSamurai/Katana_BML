@@ -192,8 +192,8 @@ ARCH		?= arm
 <<<<<<< HEAD
 CROSS_COMPILE	?= /home/steven/toolchain/bin/arm-none-linux-gnueabi-
 =======
-CROSS_COMPILE	?= /opt/toolchains/arm-2009q3/bin/arm-none-linux-gnueabi-
->>>>>>> parent of 566a725... make this shit cm friendly
+CROSS_COMPILE	?= ../../system/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+>>>>>>> 29b798b... Update kernel config and prebuilt modules.
 
 
 # Architecture as present in compile.h
